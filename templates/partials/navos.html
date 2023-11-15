@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-sm fixed-top"style="background-color:#9b5de5">
+    <div class="container">
+        {% if request.user.is_authenticated %}
+        <a class="navbar-brand text-white" href="{% url 'blog-index' %}">LifeStory</a>  
+
+   <div class="card text-center">
+    <div class="card-header">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item">
+          <a class="nav-link active text-white" aria-current="true" href="{% url 'users-profile' %}">Profile
+            <span class="sr-only">(current)</span>
+          </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link text-white" href="{% url 'users-logout' %}">Logout</a>
+        </li>
+        {% else %}
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link text-white" href="{% url 'users-sign_up' %}">Sign Up <span
+                        class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link text-white" href="{% url 'users-login' %}">Login</a>
+            </li>
+        </ul>
+        {% endif %}
+      
+    </div>
+    <div class="card-body">
+      <h5 class="card-title">Blog Website </h5>
+      <p class="card-text">If you have some problem you can write there and ask.</p>
+      <a href="#" class="btn btn-primary">God look.</a>
+    </div>
+  </div>
+</div>
+</nav>

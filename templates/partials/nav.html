@@ -1,0 +1,32 @@
+
+    <nav class="navbar navbar-expand-md navbar-light fixed-top" style=" background: rgba(0, 0, 0, 0.2);">
+        {% if request.user.is_authenticated %}
+        <a class="navbar-brand text-white" href="{% url 'blog-index' %}">BlogWise</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto text-uppercase">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="{% url 'users-profile' %}">Profile <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'users-logout' %}">Logout</a>
+                </li>
+            </ul>
+            {% else %}
+            <ul class="navbar-nav ml-auto text-uppercase">
+                <li class="nav-item active">
+                    <a class="nav-link text-white" href="{% url 'users-sign_up' %}">Sign Up <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="{% url 'users-login' %}">Login</a>
+                </li>
+            </ul>
+            {% endif %}
+        </div>
+    </nav>
+

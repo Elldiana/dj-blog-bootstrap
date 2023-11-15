@@ -1,0 +1,86 @@
+{% extends "partials/base.html" %}
+{% block title %}Home{% endblock%}
+{% load crispy_forms_tags %}
+{% block content %}
+
+    <div class="container">
+        <div class="row my-5 pt-5">
+            <div class="col-md-12">
+                
+               
+<div class="accordion" id="accordionExample">
+    <div class="accordion-item">
+        <h2 class="accordion-header" id="headingOne">
+            <button class="accordion-button w-100 border-0 rounded-lg p-3 text-white" style="background-color:#FF6969;" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                Add new post <i class="fa-solid fa-plus w-6 text-white px-2"></i><i class="fa-solid fa-minus w-6 text-secondary px-2" id="minus-icon" style="display:none;"></i>
+            </button>
+        </h2>
+     <div id="collapseOne" class="accordion-collapse collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+            <div class="accordion-body">
+                <div class="card shadow" style="background-color:#FFF8C9">
+                    <div class="card-body">  
+                        <form method="POST">
+                            {% csrf_token %}
+                            {{ form|crispy }}                                    
+                            <input  class="btn btn-block d-grid gap-2 text-uppercase text-white" style="background-color:#FF6969" type="submit" value="Post">
+                        </form>
+                    </div>
+                </div>
+            </div>
+         </div>
+      </div>
+  </div>
+                
+
+            {% for post in posts %}
+                <div class="card shadow my-2">
+                    <div class="card-body ">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <img class="img-thumbnail border-0" src="{{ post.author.profilemodel.image.url }}" alt="img">
+                            </div>
+                            <div class="col-md-8">
+                                <b class="custom-text-shadow text-dark">@ {{ post.author.username }}</b>
+                                <small class="mx-5">{{ post.date_created|date:'Y-m-d / H:i' }}</small>
+                                <hr class="my-3">
+                                <h5 class="text-secondary">{{ post.title }}</h5>
+                                <p class="text-justify my-3">
+                                    {{ post.content }}  
+                                </p>
+                                <a href="{% url 'blog-post-detail' post.id %}"> Comments: {{ post.comment_count }}</a>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+                    </div>
+                     <!-- Post ekleme -->
+                    <!-- <div class="col-md-4">
+                        <div class="card my-3 shadow">
+                            <div class="card-body">  
+                                <h4 class="text-danger">New post:</h4>    
+                                <hr>                
+                                <form method="POST">
+                                    {% csrf_token %}
+                                    {{ form|crispy }}                                    
+                                    <input  class="btn btn-block d-grid gap-2" style="background-color:#d6ce93" type="submit" value="Post">
+                                </form>
+                            </div>
+                        </div>
+                    </div> -->
+
+
+                    
+                </div>
+            
+            </div>
+            
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+
+
+

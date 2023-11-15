@@ -1,0 +1,18 @@
+
+.cover {
+    background: url('/media/girl.png');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 100vh;
+    overflow: hidden;
+}
+
+
+.cov {
+    background: url('/media/er.png');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover; 
+    height: 100vh;
+}
